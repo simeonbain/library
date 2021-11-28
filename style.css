@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
+
+html {
+  font-family: 'Rubik', sans-serif;
+
+  box-sizing: border-box; 
+
+  --color-background: hsl(226, 43%, 10%);
+  --color-header-top: hsl(246, 80%, 60%);
+  --color-header-bottom: hsl(235, 46%, 20%);
+  --color-card-bottom: hsl(235, 46%, 20%);
+  --color-card-top-fiction: hsl(348, 100%, 68%);
+  --color-card-top-nonfiction: hsl(195, 74%, 62%);
+  --color-card-top-textbook: hsl(145, 58%, 55%);
+  --color-card-top-other: hsl(43, 84%, 65%);
+  --color-text-primary: hsl(0, 0%, 100%); 
+  --color-text-secondary: hsl(235, 45%, 61%);
+  --color-text-tertiary: hsl(236, 100%, 87%); 
+}
+
