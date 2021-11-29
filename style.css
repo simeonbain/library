@@ -6,15 +6,240 @@ html {
   box-sizing: border-box; 
 
   --color-background: hsl(226, 43%, 10%);
-  --color-header-top: hsl(246, 80%, 60%);
-  --color-header-bottom: hsl(235, 46%, 20%);
-  --color-card-bottom: hsl(235, 46%, 20%);
-  --color-card-top-fiction: hsl(348, 100%, 68%);
-  --color-card-top-nonfiction: hsl(195, 74%, 62%);
-  --color-card-top-textbook: hsl(145, 58%, 55%);
-  --color-card-top-other: hsl(43, 84%, 65%);
+  --color-header-card-accent: hsl(246, 80%, 60%);
+  --color-header-card-neutral: hsl(235, 46%, 20%);
+  --color-book-card-neutral: hsl(235, 46%, 20%);
+  --color-book-card-accent-fiction: hsl(348, 100%, 68%);
+  --color-book-card-accent-nonfiction: hsl(195, 74%, 62%);
+  --color-book-card-accent-textbook: hsl(145, 58%, 55%);
+  --color-book-card-accent-other: hsl(43, 84%, 65%);
   --color-text-primary: hsl(0, 0%, 100%); 
   --color-text-secondary: hsl(235, 45%, 61%);
   --color-text-tertiary: hsl(236, 100%, 87%); 
+
+  --border-radius-card: 0.7rem;
 }
 
+body {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+
+  font-size: 18px;
+}
+
+.outer {
+  max-width: 72rem;
+  margin-inline: auto; 
+  margin-block: 2rem; 
+  padding-inline: 0.8rem; 
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; 
+  justify-content: center;
+}
+
+/* -- Utilities -- */ 
+h1, h2, p, label {
+  margin: 0; 
+  padding-block: 0.1rem;
+}
+
+h1 {
+  font-size: 1.5em;
+  font-weight: 300;
+}
+
+p, label {
+  font-size: 0.8em; 
+  font-weight: 300;
+}
+
+button {
+  border: none; 
+  margin: 0; 
+  padding: 0; 
+
+  background-color: var(--color-background);
+  color: var(--color-header-card-accent);
+  border: 0.1rem solid var(--color-header-card-accent);
+}
+
+button:hover,
+button:active {
+  background-color: var(--color-header-card-accent);
+  color: var(--color-background);
+}
+
+.filter, 
+.new-book-type,
+.new-book-status {
+  display: flex; 
+  align-items: center;
+  justify-content: space-around;
+}
+
+.filter input,
+.new-book-type input, 
+.new-book-status input {
+  display: none;
+}
+
+.hidden {
+  display: none; 
+}
+
+/* -- Header card -- */ 
+.header-card {
+  background-color: var(--color-header-card-neutral); 
+  border-radius: var(--border-radius-card);
+}
+
+.header-card-top {
+  background-color: var(--color-header-card-accent);
+  border-radius: var(--border-radius-card);
+
+  display: flex; 
+  align-items: center;
+  gap: 1.4rem; 
+
+  padding-inline: 1.5rem; 
+  padding-block: 2rem;
+}
+
+.header-card-top p {
+  color: var(--color-text-tertiary);
+}
+
+.logo img {
+  margin-top: 0.2rem;
+  width: 4.5rem; 
+}
+
+/* Filter selector */
+.filter {
+  font-size: 1.4em;
+  padding-block: 0.8em;
+  color: var(--color-text-secondary);
+}
+
+.filter input:checked + label {
+  color: var(--color-text-primary);
+  font-weight: 400;
+}
+
+/* -- Library -- */ 
+.library {
+  display: grid;
+  gap: 1.5rem; 
+}
+
+/* -- Book Cards -- */ 
+.book-card {
+  padding-top: 2rem; 
+  border-radius: var(--border-radius-card);
+
+}
+
+.book-card-bottom {
+  background-color: var(--color-book-card-neutral);
+
+  border-radius: var(--border-radius-card);
+  padding: 3rem; 
+}
+
+.fiction {
+  background-color: var(--color-book-card-accent-fiction);
+}
+
+.nonfiction {
+  background-color: var(--color-book-card-accent-nonfiction);
+}
+
+.textbook {
+  background-color: var(--color-book-card-accent-textbook);
+}
+
+.other {
+  background-color: var(--color-book-card-accent-other);
+}
+
+/* -- New book button -- */ 
+.btn-new-book {
+  position: fixed; 
+
+  bottom: 0;
+  right: 0;  
+  margin: 1.3rem 0.6rem; 
+
+  width: 3rem; 
+  aspect-ratio: 1;
+  border-radius: 50%;
+
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-new-book span {
+  font-size: 2.5em; 
+  padding-bottom: 0.15em; 
+}
+
+/* -- New book input -- */ 
+.container-new-book-card {
+  /* display: none; */
+
+  position: fixed;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+
+  height: 100vh; 
+  width: min(40rem, 100vw); 
+}
+
+.new-book-card {
+  background-color: var(--color-header-card-neutral);
+  color: var(--color-text-tertiary);
+  border: 0.1rem solid var(--color-header-card-accent);
+  border-radius: var(--border-radius-card);
+
+  margin: 2rem 1.3rem; 
+  padding: 1rem; 
+
+  display: flex;
+  flex-direction: column;
+}
+
+.new-book-card > input {
+  display: block;
+  margin-block: 0.3em; 
+}
+
+.center {
+  margin-inline: auto; 
+  margin-top: 0.5rem; 
+  text-align: center;
+  width: 100%;
+}
+
+.new-book-type,
+.new-book-status {
+  color: var(--color-text-secondary);
+  padding-bottom: 0.9rem;
+}
+
+.new-book-type input:checked + label,
+.new-book-status input:checked + label {
+  color: var(--color-text-primary);
+  font-weight: 400;
+}
+
+.new-book-buttons button {
+  margin-top: 0.5rem; 
+  margin-bottom: 0.3rem; 
+  margin-inline: 0.5rem; 
+  padding: 0.5em 0.8em; 
+
+  font-weight: 600;
+} 

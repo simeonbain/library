@@ -9,38 +9,108 @@
 </head>
 <body>
   <div class="outer">
-    <header>
-      <div class="header-top">
-        <img src="img/book-logo.png" alt="Stack of three books">
-        <h1>My Library</h1>
+
+    <!-- Header card -->
+    <header class="header-card">
+      <div class="header-card-top">
+        <div class="logo">
+          <img src="img/book-logo.png" alt="Stack of three books">
+        </div>
+        <div>
+          <p>Welcome to</p>
+          <h1>Your Library</h1>
+        </div>
       </div>
 
-      <div class="header-bottom">
-        <div class="filter">
-          <p>Filter:</p>
-          <p>Read</p>
-          <p>Unread</p>
-        </div>
-  
-        <div class="sort-by">
-          <p>Sort by:</p>
-          <p>Author</p>
-          <p>Title</p>
-        </div>
+      <!-- Filter selector -->
+      <div class="filter">
+        <input type="radio" id="filter-all" name="filter" value="all"></input>
+        <label for="filter-all">All</label>
+        <input type="radio" id="filter-read" name="filter" value="read"></input>
+        <label for="filter-read">Read</label>
+        <input type="radio" id="filter-unread" name="filter" value="unread"></input>
+        <label for="filter-unread">Unread</label>
       </div>
     </header>
 
-    <div class="library">
-      <div class="book">
-        Book1
+    <!-- Library -->
+    <section class="library">
+      <div class="book-card fiction">
+        <div class="book-card-bottom">
+          Book1
+        </div>
       </div>
-      <div class="book">
-        Book2 
+
+      <div class="book-card nonfiction">
+        <div class="book-card-bottom">
+          Book1
+        </div>
       </div>
-      <div class="book">
-        Book3
+
+      <div class="book-card textbook">
+        <div class="book-card-bottom">
+          Book1
+        </div>
+      </div>
+
+      <div class="book-card other">
+        <div class="book-card-bottom">
+          Book1
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- New book button -->
+  <button class="btn-new-book"><span>+</span></button>
+
+  <!-- New book form -->
+  <div class="container-new-book-card hidden">
+    <div class="new-book-card"> 
+
+      <!--Title-->
+      <label for="new-book-title">Title</label>
+      <input type="text" name="new-book-title"></input>
+
+      <!--Author-->
+      <label for="new-book-author">Author</label>
+      <input type="text" name="new-book-author"></input>
+
+      <!--Number of pages-->
+      <label for="new-book-numpages">Number of pages</label>
+      <input type="number" name="new-book-numpages"></input>
+
+      <div class="center">
+        <!--Book type-->
+        <label for="new-book-type">Type</label>
+        <div class="new-book-type">
+          <input type="radio" id="new-book-type-fiction" name="new-book-type"></input>
+          <label for="new-book-type-fiction">Fiction</label>
+          <input type="radio" id="new-book-type-nonfiction" name="new-book-type"></input>
+          <label for="new-book-type-nonfiction">Non-fiction</label>
+          <input type="radio" id="new-book-type-textbook" name="new-book-type"></input>
+          <label for="new-book-type-textbook">Textbook</label>
+          <input type="radio" id="new-book-type-other" name="new-book-type"></input>
+          <label for="new-book-type-other">Other</label>
+        </div>
+  
+        <!-- Book status -->
+        <label for="new-book-status center">Status</label>
+        <div class="new-book-status">
+          <input type="radio" id="new-book-status-read" name="new-book-status"></input>
+          <label for="new-book-status-read">Read</label>
+          <input type="radio" id="new-book-status-unread" name="new-book-status"></input>
+          <label for="new-book-status-unread">Unread</label>
+        </div>
+        
+        <!-- Submit form/cancel -->
+        <div class="new-book-buttons">
+          <button type="button">Cancel</button>
+          <button type="submit">Create</button>
+        </div>
       </div>
     </div>
   </div>
+
 </body>
 </html>
