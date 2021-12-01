@@ -3,12 +3,12 @@
 <head>
   <title>Library</title>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <link rel="stylesheet" href="style.css"> 
   <script src="library.js" defer></script>
 </head>
 <body>
-  <div class="outer">
+  <div class="container-main">
 
     <!-- Header card -->
     <header class="header-card">
@@ -36,26 +36,90 @@
     <!-- Library -->
     <section class="library">
       <div class="book-card fiction">
+        <button>x</button>
         <div class="book-card-bottom">
-          Book1
+          <div class="book-card-content">
+            <div>
+              <h3>J.R.R. Tolkien</h2>
+              <div class="read">
+                <p>Read</p>
+                <button>&check;</button>
+              </div>
+            </div>
+            <div>
+              <h2>The Hobbit</h2>
+              <div class="pages">
+                <p>Pages</p>
+                <h2>192</h2>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="book-card nonfiction">
+        <button>x</button>
         <div class="book-card-bottom">
-          Book1
+          <div class="book-card-content">
+            <div>
+              <h3>J.R.R. Tolkien</h2>
+              <div class="read">
+                <p>Read</p>
+                <button>&check;</button>
+              </div>
+            </div>
+            <div>
+              <h2>Lord of the Rings: The Fellowship of the Ring</h2>
+              <div class="pages">
+                <p>Pages</p>
+                <h2>192</h2>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="book-card textbook">
+        <button>x</button>
         <div class="book-card-bottom">
-          Book1
+          <div class="book-card-content">
+            <div>
+              <h3>J.R.R. Tolkien</h2>
+              <div class="read">
+                <p>Read</p>
+                <button>&check;</button>
+              </div>
+            </div>
+            <div>
+              <h2>Lord of the Rings: The Two Towers</h2>
+              <div class="pages">
+                <p>Pages</p>
+                <h2>192</h2>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="book-card other">
+        <button>x</button>
         <div class="book-card-bottom">
-          Book1
+          <div class="book-card-content">
+            <div>
+              <h3>J.R.R. Tolkien</h2>
+              <div class="read">
+                <p>Read</p>
+                <button>&check;</button>
+              </div>
+            </div>
+            <div>
+              <h2>Lord of the Rings: The Return of the King</h2>
+              <div class="pages">
+                <p>Pages</p>
+                <h2>192</h2>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -65,8 +129,10 @@
   <button class="btn-new-book"><span>+</span></button>
 
   <!-- New book form -->
-  <div class="container-new-book-card hidden">
-    <div class="new-book-card"> 
+  <div class="container-new-book-form hidden">
+    <form class="new-book-form"> 
+      <!--Form Heading-->
+      <h1>New Book</h1>
 
       <!--Title-->
       <label for="new-book-title">Title</label>
@@ -78,7 +144,7 @@
 
       <!--Number of pages-->
       <label for="new-book-numpages">Number of pages</label>
-      <input type="number" name="new-book-numpages"></input>
+      <input type="number" name="new-book-numpages" min="0"></input>
 
       <div class="center">
         <!--Book type-->
@@ -105,11 +171,11 @@
         
         <!-- Submit form/cancel -->
         <div class="new-book-buttons">
-          <button type="button">Cancel</button>
-          <button type="submit">Create</button>
+          <button class="btn-new-book-cancel" type="button">Cancel</button>
+          <button class="btn-new-book-submit" type="submit">Create</button>
         </div>
       </div>
-    </div>
+    </form>
   </div>
 
 </body>

@@ -10,9 +10,13 @@ html {
   --color-header-card-neutral: hsl(235, 46%, 20%);
   --color-book-card-neutral: hsl(235, 46%, 20%);
   --color-book-card-accent-fiction: hsl(348, 100%, 68%);
+  --color-book-card-accent-fiction-alt: hsl(348, 100%, 90%);
   --color-book-card-accent-nonfiction: hsl(195, 74%, 62%);
+  --color-book-card-accent-nonfiction-alt: hsl(195, 74%, 84%);
   --color-book-card-accent-textbook: hsl(145, 58%, 55%);
+  --color-book-card-accent-textbook-alt: hsl(145, 58%, 87%);
   --color-book-card-accent-other: hsl(43, 84%, 65%);
+  --color-book-card-accent-other-alt: hsl(43, 84%, 87%);
   --color-text-primary: hsl(0, 0%, 100%); 
   --color-text-secondary: hsl(235, 45%, 61%);
   --color-text-tertiary: hsl(236, 100%, 87%); 
@@ -27,11 +31,11 @@ body {
   font-size: 18px;
 }
 
-.outer {
+.container-main {
   max-width: 72rem;
   margin-inline: auto; 
   margin-block: 2rem; 
-  padding-inline: 0.8rem; 
+  padding-inline: 1rem; 
   display: flex;
   flex-direction: column;
   gap: 1.5rem; 
@@ -85,7 +89,7 @@ button:active {
 }
 
 .hidden {
-  display: none; 
+  display: none !important; 
 }
 
 /* -- Header card -- */ 
@@ -137,30 +141,113 @@ button:active {
 .book-card {
   padding-top: 2rem; 
   border-radius: var(--border-radius-card);
-
 }
 
 .book-card-bottom {
   background-color: var(--color-book-card-neutral);
-
   border-radius: var(--border-radius-card);
-  padding: 3rem; 
+  height: 100%;
+}
+
+.book-card-content {
+  display: flex; 
+  flex-direction: column;
+  gap: 1rem; 
+  padding: 1.5rem; 
+}
+
+.book-card-content div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.book-card h2 {
+  font-weight: 300; 
+  font-size: 1.5em; 
+  padding: 0; 
+  margin: 0; 
+}
+
+.book-card h3 {
+  padding: 0; 
+  margin: 0; 
+  font-weight: 500; 
+  font-size: 1em; 
+} 
+
+.book-card p {
+  font-size: 0.7em; 
+}
+
+.pages p {
+  margin-top: auto; 
+  margin-bottom: 0.15em; 
+  margin-inline: 0.5em; 
+}
+
+.pages {
+  margin-top: auto; 
+  color: var(--color-text-tertiary);
+}
+
+.read p {
+  margin-inline: 0.5rem; 
+  color: var(--color-text-tertiary);
+  margin-top: auto; 
+}
+
+.read button {
+  border-radius: 50%;
+  aspect-ratio: 1;
+  width: 2em; 
+  color: var(--color-background);
+}
+
+.book-card > button {
+  position: absolute;
+  background-color: transparent;
+  border: none; 
+  font-size: 1.4em;
+  margin-inline: 0.8rem; 
+  top: 0; 
+  right: 0; 
 }
 
 .fiction {
   background-color: var(--color-book-card-accent-fiction);
+  position: relative;
+}
+
+.fiction > button {
+  color: var(--color-book-card-accent-fiction-alt);
 }
 
 .nonfiction {
   background-color: var(--color-book-card-accent-nonfiction);
+  position: relative;
+}
+
+.nonfiction > button {
+  color: var(--color-book-card-accent-nonfiction-alt);
 }
 
 .textbook {
   background-color: var(--color-book-card-accent-textbook);
+  position: relative;
+}
+
+.textbook > button {
+  color: var(--color-book-card-accent-textbook-alt);
 }
 
 .other {
   background-color: var(--color-book-card-accent-other);
+  position: relative;
+}
+
+.other > button {
+  color: var(--color-book-card-accent-other-alt);
 }
 
 /* -- New book button -- */ 
@@ -186,9 +273,7 @@ button:active {
 }
 
 /* -- New book input -- */ 
-.container-new-book-card {
-  /* display: none; */
-
+.container-new-book-form {
   position: fixed;
   left: 50%;
   top: 0;
@@ -198,10 +283,8 @@ button:active {
   width: min(40rem, 100vw); 
 }
 
-.new-book-card {
-  background-color: var(--color-header-card-neutral);
+.new-book-form {
   color: var(--color-text-tertiary);
-  border: 0.1rem solid var(--color-header-card-accent);
   border-radius: var(--border-radius-card);
 
   margin: 2rem 1.3rem; 
@@ -211,7 +294,13 @@ button:active {
   flex-direction: column;
 }
 
-.new-book-card > input {
+.new-book-form h1 {
+  font-size: 3em;
+  text-align: center;
+  margin: 1rem;
+}
+
+.new-book-form > input {
   display: block;
   margin-block: 0.3em; 
 }
@@ -236,10 +325,23 @@ button:active {
 }
 
 .new-book-buttons button {
-  margin-top: 0.5rem; 
-  margin-bottom: 0.3rem; 
-  margin-inline: 0.5rem; 
+  margin-block: 1rem; 
+  margin-inline: 1rem; 
   padding: 0.5em 0.8em; 
 
   font-weight: 600;
+  font-size: 0.9rem;
 } 
+
+/* -- Media queries -- */ 
+@media (min-width: 700px) {
+  .library {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 900px) {
+  .library {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
