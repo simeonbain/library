@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap");
 
 html {
-  font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
 
-  box-sizing: border-box; 
+  box-sizing: border-box;
 
   --color-background: hsl(226, 43%, 10%);
   --color-header-card-accent: hsl(246, 80%, 60%);
@@ -17,9 +17,9 @@ html {
   --color-book-card-accent-textbook-alt: hsl(145, 58%, 87%);
   --color-book-card-accent-other: hsl(43, 84%, 65%);
   --color-book-card-accent-other-alt: hsl(43, 84%, 87%);
-  --color-text-primary: hsl(0, 0%, 100%); 
+  --color-text-primary: hsl(0, 0%, 100%);
   --color-text-secondary: hsl(235, 45%, 61%);
-  --color-text-tertiary: hsl(236, 100%, 87%); 
+  --color-text-tertiary: hsl(236, 100%, 87%);
 
   --border-radius-card: 0.7rem;
 }
@@ -33,18 +33,21 @@ body {
 
 .container-main {
   max-width: 72rem;
-  margin-inline: auto; 
-  margin-block: 2rem; 
-  padding-inline: 1rem; 
+  margin-inline: auto;
+  margin-block: 2rem;
+  padding-inline: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem; 
+  gap: 1.5rem;
   justify-content: center;
 }
 
-/* -- Utilities -- */ 
-h1, h2, p, label {
-  margin: 0; 
+/* -- Utilities -- */
+h1,
+h2,
+p,
+label {
+  margin: 0;
   padding-block: 0.1rem;
 }
 
@@ -53,15 +56,16 @@ h1 {
   font-weight: 300;
 }
 
-p, label {
-  font-size: 0.8em; 
+p,
+label {
+  font-size: 0.8em;
   font-weight: 300;
 }
 
 button {
-  border: none; 
-  margin: 0; 
-  padding: 0; 
+  border: none;
+  margin: 0;
+  padding: 0;
 
   background-color: var(--color-background);
   color: var(--color-header-card-accent);
@@ -69,32 +73,33 @@ button {
 }
 
 button:hover,
-button:active {
+button:active,
+.read {
   background-color: var(--color-header-card-accent);
   color: var(--color-background);
 }
 
-.filter, 
+.filter,
 .new-book-type,
 .new-book-status {
-  display: flex; 
+  display: flex;
   align-items: center;
   justify-content: space-around;
 }
 
 .filter input,
-.new-book-type input, 
+.new-book-type input,
 .new-book-status input {
   display: none;
 }
 
 .hidden {
-  display: none !important; 
+  display: none !important;
 }
 
-/* -- Header card -- */ 
+/* -- Header card -- */
 .header-card {
-  background-color: var(--color-header-card-neutral); 
+  background-color: var(--color-header-card-neutral);
   border-radius: var(--border-radius-card);
 }
 
@@ -102,11 +107,11 @@ button:active {
   background-color: var(--color-header-card-accent);
   border-radius: var(--border-radius-card);
 
-  display: flex; 
+  display: flex;
   align-items: center;
-  gap: 1.4rem; 
+  gap: 1.4rem;
 
-  padding-inline: 1.5rem; 
+  padding-inline: 1.5rem;
   padding-block: 2rem;
 }
 
@@ -116,7 +121,7 @@ button:active {
 
 .logo img {
   margin-top: 0.2rem;
-  width: 4.5rem; 
+  width: 4.5rem;
 }
 
 /* Filter selector */
@@ -131,15 +136,15 @@ button:active {
   font-weight: 400;
 }
 
-/* -- Library -- */ 
-.library {
+/* -- Books Container -- */
+.books-container {
   display: grid;
-  gap: 1.5rem; 
+  gap: 1.5rem;
 }
 
-/* -- Book Cards -- */ 
+/* -- Book Cards -- */
 .book-card {
-  padding-top: 2rem; 
+  padding-top: 2rem;
   border-radius: var(--border-radius-card);
 }
 
@@ -150,10 +155,10 @@ button:active {
 }
 
 .book-card-content {
-  display: flex; 
+  display: flex;
   flex-direction: column;
-  gap: 1rem; 
-  padding: 1.5rem; 
+  gap: 1rem;
+  padding: 1.5rem;
 }
 
 .book-card-content div {
@@ -163,55 +168,55 @@ button:active {
 }
 
 .book-card h2 {
-  font-weight: 300; 
-  font-size: 1.5em; 
-  padding: 0; 
-  margin: 0; 
+  font-weight: 300;
+  font-size: 1.5em;
+  padding: 0;
+  margin: 0;
 }
 
 .book-card h3 {
-  padding: 0; 
-  margin: 0; 
-  font-weight: 500; 
-  font-size: 1em; 
-} 
+  padding: 0;
+  margin: 0;
+  font-weight: 500;
+  font-size: 1em;
+}
 
 .book-card p {
-  font-size: 0.7em; 
+  font-size: 0.7em;
 }
 
 .pages p {
-  margin-top: auto; 
-  margin-bottom: 0.15em; 
-  margin-inline: 0.5em; 
+  margin-top: auto;
+  margin-bottom: 0.15em;
+  margin-inline: 0.5em;
 }
 
 .pages {
-  margin-top: auto; 
+  margin-top: auto;
   color: var(--color-text-tertiary);
 }
 
-.read p {
-  margin-inline: 0.5rem; 
+.status p {
+  margin-inline: 0.5rem;
   color: var(--color-text-tertiary);
-  margin-top: auto; 
+  margin-top: auto;
 }
 
-.read button {
+.status button {
   border-radius: 50%;
   aspect-ratio: 1;
-  width: 2em; 
+  width: 2em;
   color: var(--color-background);
 }
 
 .book-card > button {
   position: absolute;
   background-color: transparent;
-  border: none; 
+  border: none;
   font-size: 1.4em;
-  margin-inline: 0.8rem; 
-  top: 0; 
-  right: 0; 
+  margin-inline: 0.8rem;
+  top: 0;
+  right: 0;
 }
 
 .fiction {
@@ -250,45 +255,45 @@ button:active {
   color: var(--color-book-card-accent-other-alt);
 }
 
-/* -- New book button -- */ 
+/* -- New book button -- */
 .btn-new-book {
-  position: fixed; 
+  position: fixed;
 
   bottom: 0;
-  right: 0;  
-  margin: 1.3rem 0.6rem; 
+  right: 0;
+  margin: 1.3rem 0.6rem;
 
-  width: 3rem; 
+  width: 3rem;
   aspect-ratio: 1;
   border-radius: 50%;
 
-  display: flex; 
+  display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .btn-new-book span {
-  font-size: 2.5em; 
-  padding-bottom: 0.15em; 
+  font-size: 2.5em;
+  padding-bottom: 0.15em;
 }
 
-/* -- New book input -- */ 
+/* -- New book input -- */
 .container-new-book-form {
   position: fixed;
   left: 50%;
   top: 0;
   transform: translateX(-50%);
 
-  height: 100vh; 
-  width: min(40rem, 100vw); 
+  height: 100vh;
+  width: min(40rem, 100vw);
 }
 
 .new-book-form {
   color: var(--color-text-tertiary);
   border-radius: var(--border-radius-card);
 
-  margin: 2rem 1.3rem; 
-  padding: 1rem; 
+  margin: 2rem 1.3rem;
+  padding: 1rem;
 
   display: flex;
   flex-direction: column;
@@ -302,12 +307,12 @@ button:active {
 
 .new-book-form > input {
   display: block;
-  margin-block: 0.3em; 
+  margin-block: 0.3em;
 }
 
 .center {
-  margin-inline: auto; 
-  margin-top: 0.5rem; 
+  margin-inline: auto;
+  margin-top: 0.5rem;
   text-align: center;
   width: 100%;
 }
@@ -325,23 +330,23 @@ button:active {
 }
 
 .new-book-buttons button {
-  margin-block: 1rem; 
-  margin-inline: 1rem; 
-  padding: 0.5em 0.8em; 
+  margin-block: 1rem;
+  margin-inline: 1rem;
+  padding: 0.5em 0.8em;
 
   font-weight: 600;
   font-size: 0.9rem;
-} 
+}
 
-/* -- Media queries -- */ 
+/* -- Media queries -- */
 @media (min-width: 700px) {
-  .library {
+  .books-container {
     grid-template-columns: 1fr 1fr;
   }
 }
 
 @media (min-width: 900px) {
-  .library {
+  .books-container {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
