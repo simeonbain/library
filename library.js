@@ -1,5 +1,5 @@
 /* Global Variables */ 
-const library = []; 
+let library = []; 
 
 /* Classes */
 function Book(title, author, numPages, type, status) {
@@ -15,24 +15,51 @@ function onLoad() {
   addSampleBooks();
 }
 
+/* Adds the given book to the library */
+function addBookToLibrary(book) {
+  library.push(book); 
+}
+
+/* Removes the given book from the library */
+function removeBookFromLibrary(bookToDelete) {
+  library = library.filter(book => book !== bookToDelete);
+}
+
+/* Updates the DOM to populate the books container with the library contents */ 
+function updateLibraryDisplay() {
+  // Remove existing DOM elements
+  while(booksContainer.lastElementChild) {
+    booksContainer.removeChild(booksContainer.lastElementChild); 
+  }
+
+  // Create a DOM element for each book in the library and display it 
+  library.forEach(book => booksContainer.appendChild(createBookElement(book)));
+}
+
 /* Creates and returns the HTML element that displays a book */
 function createBookElement(book) {
   const deleteButton = document.createElement(`button`);
   deleteButton.classList.add(`delete`);
   deleteButton.innerText = `x`;
+  // Event listener for delete button
+  deleteButton.addEventListener(`click`, () => deleteBook(book)); 
 
   const author = document.createElement(`h3`);
   author.innerText = book.author;
 
-  const readButton = document.createElement(`div`);
-  readButton.classList.add(`status`);
-  readButton.appendChild(document.createElement(`p`));
-  readButton.lastElementChild.innerText = `Read`;
-  readButton.appendChild(document.createElement(`button`));
-  readButton.lastElementChild.innerHTML = `&check;`;
+  const statusButton = document.createElement(`div`);
+  statusButton.classList.add(`status`);
+  statusButton.appendChild(document.createElement(`p`));
+  statusButton.lastElementChild.innerText = `Read`;
+  statusButton.appendChild(document.createElement(`button`));
+  statusButton.lastElementChild.innerHTML = `&check;`;
   if (book.status === `read`) {
-    readButton.lastElementChild.classList.add(`read`);
+    statusButton.lastElementChild.classList.add(`read`);
+  } else {
+    statusButton.lastElementChild.classList.add(`unread`);
   }
+  // Event listener for status button
+  statusButton.addEventListener(`click`, () => updateBookStatus(book)); 
 
   const title = document.createElement(`h2`);
   title.innerText = book.title;
@@ -50,7 +77,7 @@ function createBookElement(book) {
   bookCardBottom.lastElementChild.classList.add(`book-card-content`);
   bookCardBottom.lastElementChild.appendChild(document.createElement(`div`));
   bookCardBottom.lastElementChild.lastElementChild.appendChild(author);
-  bookCardBottom.lastElementChild.lastElementChild.appendChild(readButton);
+  bookCardBottom.lastElementChild.lastElementChild.appendChild(statusButton);
   bookCardBottom.lastElementChild.appendChild(document.createElement(`div`));
   bookCardBottom.lastElementChild.lastElementChild.appendChild(title);
   bookCardBottom.lastElementChild.lastElementChild.appendChild(pages);
@@ -65,27 +92,16 @@ function createBookElement(book) {
   return bookElement;
 }
 
-/* Adds the given book to the library */
-function addBookToLibrary(book) {
-  library.push(book); 
+/* Deletes a given book */ 
+function deleteBook(book) {
+  removeBookFromLibrary(book);
+  updateLibraryDisplay();  
 }
 
-/* Removes the given book from the library */
-function removeBookFromLibrary(book) {
-  library.pop(book); 
-}
-
-/* Updates the DOM to populate the books container with the library contents */ 
-function updateLibraryDisplay() {
-  // Remove existing DOM elements
-  while(booksContainer.lastElementChild) {
-    booksContainer.removeChild(); 
-  }
-
-  // Create a DOM element for each book in the library and display it 
-  library.forEach(book => {
-    booksContainer.appendChild(createBookElement(book)); 
-  });
+/* Updates the status of a given book */ 
+function updateBookStatus(book) {
+  book.status === `unread` ? book.status = `read` : book.status = `unread`; 
+  updateLibraryDisplay(); 
 }
 
 /* Updates the DOM to present the new book form to the user */
@@ -146,7 +162,13 @@ function addSampleBooks() {
     )
   );
   sampleBooks.push(
-    new Book(`Into Thin Air`, `Jon Krakauer`, 416, `nonfiction`, `unread`)
+    new Book(
+      `Into Thin Air`, 
+      `Jon Krakauer`, 
+      416, 
+      `nonfiction`, 
+      `unread`
+    )
   );
   sampleBooks.push(
     new Book(
@@ -161,6 +183,6 @@ function addSampleBooks() {
   sampleBooks.forEach((book) => {
     addBookToLibrary(book);
   });
-  
+
   updateLibraryDisplay(); 
 }
