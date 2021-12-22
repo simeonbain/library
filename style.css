@@ -294,13 +294,9 @@ button:active {
 
 /* -- New book input -- */
 .container-new-book-form {
-  position: fixed;
-  left: 50%;
-  top: 0;
-  transform: translateX(-50%);
-
   height: 100vh;
   width: min(40rem, 100vw);
+  margin-inline: auto; 
 }
 
 .new-book-form {
