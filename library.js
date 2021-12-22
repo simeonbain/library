@@ -1,3 +1,6 @@
+/* Global Variables */ 
+const library = []; 
+
 /* Classes */
 function Book(title, author, numPages, type, status) {
   this.title = title;
@@ -64,11 +67,26 @@ function createBookElement(book) {
 
 /* Adds the given book to the library */
 function addBookToLibrary(book) {
-  booksContainer.appendChild(createBookElement(book));
+  library.push(book); 
 }
 
 /* Removes the given book from the library */
-function removeBookFromLibrary(book) {}
+function removeBookFromLibrary(book) {
+  library.pop(book); 
+}
+
+/* Updates the DOM to populate the books container with the library contents */ 
+function updateLibraryDisplay() {
+  // Remove existing DOM elements
+  while(booksContainer.lastElementChild) {
+    booksContainer.removeChild(); 
+  }
+
+  // Create a DOM element for each book in the library and display it 
+  library.forEach(book => {
+    booksContainer.appendChild(createBookElement(book)); 
+  });
+}
 
 /* Updates the DOM to present the new book form to the user */
 function openNewBookForm() {
@@ -77,17 +95,17 @@ function openNewBookForm() {
   main.classList.add(`hidden`);
 }
 
+/* Parses the new book form input from the user and adds a new book */
+function processNewBookForm() {
+  newBookForm.reset();
+  closeNewBookForm();
+}
+
 /* Updates the DOM to hide the new book form from the user */
 function closeNewBookForm() {
   newBookFormDisplay.classList.add(`hidden`);
   newBookButton.classList.remove(`hidden`);
   main.classList.remove(`hidden`);
-}
-
-/* Parses the new book form input from the user and adds a new book */
-function processNewBookForm() {
-  newBookForm.reset();
-  closeNewBookForm();
 }
 
 /* Query Seletors */
@@ -143,4 +161,6 @@ function addSampleBooks() {
   sampleBooks.forEach((book) => {
     addBookToLibrary(book);
   });
+  
+  updateLibraryDisplay(); 
 }
