@@ -205,8 +205,8 @@ button:active {
 
 .status button {
   border-radius: 50%;
-  aspect-ratio: 1;
-  width: 2em;
+  width: 1.7rem;
+  height: 1.7rem;
 }
 
 .status button.unread {
@@ -279,7 +279,7 @@ button:active {
   margin: 1.3rem 0.6rem;
 
   width: 3rem;
-  aspect-ratio: 1;
+  height: 3rem; 
   border-radius: 50%;
 
   display: flex;
