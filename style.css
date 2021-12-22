@@ -8,6 +8,8 @@ html {
   --color-background: hsl(226, 43%, 10%);
   --color-header-card-accent: hsl(246, 80%, 60%);
   --color-header-card-neutral: hsl(235, 46%, 20%);
+  --color-button-primary: hsl(226, 43%, 10%);
+  --color-button-secondary: hsl(246, 80%, 60%);
   --color-book-card-neutral: hsl(235, 46%, 20%);
   --color-book-card-accent-fiction: hsl(348, 100%, 68%);
   --color-book-card-accent-fiction-alt: hsl(348, 100%, 90%);
@@ -67,16 +69,15 @@ button {
   margin: 0;
   padding: 0;
 
-  background-color: var(--color-background);
-  color: var(--color-header-card-accent);
-  border: 0.1rem solid var(--color-header-card-accent);
+  background-color: var(--color-button-primary);
+  color: var(--color-button-secondary);
+  border: 0.1rem solid var(--color-button-secondary);
 }
 
-button:hover,
-button:active,
-.read {
-  background-color: var(--color-header-card-accent);
-  color: var(--color-background);
+button:hover, 
+button:active {
+  background-color: var(--color-button-secondary);
+  color: var(--color-button-primary);
 }
 
 .filter,
@@ -124,7 +125,7 @@ button:active,
   width: 4.5rem;
 }
 
-/* Filter selector */
+/* -- Filter selector -- */
 .filter {
   font-size: 1.4em;
   padding-block: 0.8em;
@@ -206,7 +207,21 @@ button:active,
   border-radius: 50%;
   aspect-ratio: 1;
   width: 2em;
-  color: var(--color-background);
+}
+
+.status button.unread {
+  background-color: var(--color-button-primary);
+  color: var(--color-button-primary);
+}
+
+.status button.read {
+  background-color: var(--color-button-secondary);
+  color: var(--color-button-primary);
+}
+
+.status button.unread:hover {
+  background-color: var(--color-button-primary);
+  color: var(--color-button-secondary);
 }
 
 .book-card > button {
