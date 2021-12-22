@@ -1,5 +1,6 @@
 /* Global Variables */
 let library = [];
+let activeFilter = `all`;
 
 /* Classes */
 function Book(title, author, numPages, type, status) {
@@ -13,6 +14,8 @@ function Book(title, author, numPages, type, status) {
 /* Actions to perform on load or refresh */
 function onLoad() {
   addSampleBooks();
+  document.getElementById(`filter-all`).checked = true; 
+  updateLibraryDisplay(); 
 }
 
 /* Adds the given book to the library */
@@ -33,9 +36,15 @@ function updateLibraryDisplay() {
   }
 
   // Create a DOM element for each book in the library and display it
-  library.forEach((book) =>
-    booksContainer.appendChild(createBookElement(book))
-  );
+  library.forEach((book) => {
+    if (activeFilter === `all`) {
+      booksContainer.appendChild(createBookElement(book));
+    } else if (activeFilter === book.status) {
+      booksContainer.appendChild(createBookElement(book));
+    } else {
+      // book should be filtered out, so don't display it
+    }
+  });
 }
 
 /* Creates and returns the HTML element that displays a book */
@@ -106,6 +115,12 @@ function updateBookStatus(book) {
   updateLibraryDisplay();
 }
 
+/* Updates the DOM to apply the selected filter */ 
+function filterLibrary(evt) {
+  activeFilter = evt.target.value;
+  updateLibraryDisplay();
+}
+
 /* Updates the DOM to present the new book form to the user */
 function openNewBookForm() {
   newBookFormDisplay.classList.remove(`hidden`);
@@ -142,17 +157,21 @@ function closeNewBookForm() {
   main.classList.remove(`hidden`);
 }
 
-/* Query Seletors */
+/* Query Selectors */
+const main = document.querySelector(`.container-main`);
+const booksContainer = document.querySelector(`.books-container`);
+const filterSelector = document.querySelectorAll(`.filter input`);
 const newBookButton = document.querySelector(`.btn-new-book`);
 const newBookCancelButton = document.querySelector(`.btn-new-book-cancel`);
 const newBookCreateButton = document.querySelector(`.btn-new-book-create`);
 const newBookFormDisplay = document.querySelector(`.container-new-book-form`);
 const newBookForm = document.querySelector(`.new-book-form`);
-const main = document.querySelector(`.container-main`);
-const booksContainer = document.querySelector(`.books-container`);
 
 /* Event Listeners */
 window.addEventListener(`load`, onLoad);
+filterSelector.forEach((filter) =>
+  filter.addEventListener(`click`, filterLibrary)
+);
 newBookButton.addEventListener(`click`, openNewBookForm);
 newBookCancelButton.addEventListener(`click`, closeNewBookForm);
 newBookCreateButton.addEventListener(`click`, processNewBookForm);
@@ -195,6 +214,4 @@ function addSampleBooks() {
   sampleBooks.forEach((book) => {
     addBookToLibrary(book);
   });
-
-  updateLibraryDisplay();
 }
