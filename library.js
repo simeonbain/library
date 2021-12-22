@@ -1,5 +1,5 @@
-/* Global Variables */ 
-let library = []; 
+/* Global Variables */
+let library = [];
 
 /* Classes */
 function Book(title, author, numPages, type, status) {
@@ -17,23 +17,25 @@ function onLoad() {
 
 /* Adds the given book to the library */
 function addBookToLibrary(book) {
-  library.push(book); 
+  library.push(book);
 }
 
 /* Removes the given book from the library */
 function removeBookFromLibrary(bookToDelete) {
-  library = library.filter(book => book !== bookToDelete);
+  library = library.filter((book) => book !== bookToDelete);
 }
 
-/* Updates the DOM to populate the books container with the library contents */ 
+/* Updates the DOM to populate the books container with the library contents */
 function updateLibraryDisplay() {
   // Remove existing DOM elements
-  while(booksContainer.lastElementChild) {
-    booksContainer.removeChild(booksContainer.lastElementChild); 
+  while (booksContainer.lastElementChild) {
+    booksContainer.removeChild(booksContainer.lastElementChild);
   }
 
-  // Create a DOM element for each book in the library and display it 
-  library.forEach(book => booksContainer.appendChild(createBookElement(book)));
+  // Create a DOM element for each book in the library and display it
+  library.forEach((book) =>
+    booksContainer.appendChild(createBookElement(book))
+  );
 }
 
 /* Creates and returns the HTML element that displays a book */
@@ -42,7 +44,7 @@ function createBookElement(book) {
   deleteButton.classList.add(`delete`);
   deleteButton.innerText = `x`;
   // Event listener for delete button
-  deleteButton.addEventListener(`click`, () => deleteBook(book)); 
+  deleteButton.addEventListener(`click`, () => deleteBook(book));
 
   const author = document.createElement(`h3`);
   author.innerText = book.author;
@@ -59,7 +61,7 @@ function createBookElement(book) {
     statusButton.lastElementChild.classList.add(`unread`);
   }
   // Event listener for status button
-  statusButton.addEventListener(`click`, () => updateBookStatus(book)); 
+  statusButton.addEventListener(`click`, () => updateBookStatus(book));
 
   const title = document.createElement(`h2`);
   title.innerText = book.title;
@@ -92,16 +94,16 @@ function createBookElement(book) {
   return bookElement;
 }
 
-/* Deletes a given book */ 
+/* Deletes a given book */
 function deleteBook(book) {
   removeBookFromLibrary(book);
-  updateLibraryDisplay();  
+  updateLibraryDisplay();
 }
 
-/* Updates the status of a given book */ 
+/* Updates the status of a given book */
 function updateBookStatus(book) {
-  book.status === `unread` ? book.status = `read` : book.status = `unread`; 
-  updateLibraryDisplay(); 
+  book.status === `unread` ? (book.status = `read`) : (book.status = `unread`);
+  updateLibraryDisplay();
 }
 
 /* Updates the DOM to present the new book form to the user */
@@ -113,21 +115,37 @@ function openNewBookForm() {
 
 /* Parses the new book form input from the user and adds a new book */
 function processNewBookForm() {
-  newBookForm.reset();
+  const title = newBookForm.elements[`new-book-title`].value;
+  const author = newBookForm.elements[`new-book-author`].value;
+  const numPages = newBookForm.elements[`new-book-numpages`].value;
+  const type = newBookForm.elements[`new-book-type`].value;
+  const status = newBookForm.elements[`new-book-status`].value;
+
+  const book = new Book(
+    title === `` ? `_` : title,
+    author === `` ? `_` : author,
+    numPages === `` ? `_` : numPages,
+    type === `` ? `other` : type,
+    status === `` ? `unread` : status
+  );
+
+  addBookToLibrary(book);
   closeNewBookForm();
 }
 
 /* Updates the DOM to hide the new book form from the user */
 function closeNewBookForm() {
+  newBookForm.reset();
   newBookFormDisplay.classList.add(`hidden`);
   newBookButton.classList.remove(`hidden`);
+  updateLibraryDisplay();
   main.classList.remove(`hidden`);
 }
 
 /* Query Seletors */
 const newBookButton = document.querySelector(`.btn-new-book`);
 const newBookCancelButton = document.querySelector(`.btn-new-book-cancel`);
-const newBookSubmitButton = document.querySelector(`.btn-new-book-submit`);
+const newBookCreateButton = document.querySelector(`.btn-new-book-create`);
 const newBookFormDisplay = document.querySelector(`.container-new-book-form`);
 const newBookForm = document.querySelector(`.new-book-form`);
 const main = document.querySelector(`.container-main`);
@@ -137,7 +155,7 @@ const booksContainer = document.querySelector(`.books-container`);
 window.addEventListener(`load`, onLoad);
 newBookButton.addEventListener(`click`, openNewBookForm);
 newBookCancelButton.addEventListener(`click`, closeNewBookForm);
-newBookSubmitButton.addEventListener(`click`, processNewBookForm);
+newBookCreateButton.addEventListener(`click`, processNewBookForm);
 
 /* Add some sample books for demo purposes */
 function addSampleBooks() {
@@ -162,13 +180,7 @@ function addSampleBooks() {
     )
   );
   sampleBooks.push(
-    new Book(
-      `Into Thin Air`, 
-      `Jon Krakauer`, 
-      416, 
-      `nonfiction`, 
-      `unread`
-    )
+    new Book(`Into Thin Air`, `Jon Krakauer`, 416, `nonfiction`, `unread`)
   );
   sampleBooks.push(
     new Book(
@@ -184,5 +196,5 @@ function addSampleBooks() {
     addBookToLibrary(book);
   });
 
-  updateLibraryDisplay(); 
+  updateLibraryDisplay();
 }
