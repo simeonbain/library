@@ -14,8 +14,8 @@ function Book(title, author, numPages, type, status) {
 /* Actions to perform on load or refresh */
 function onLoad() {
   addSampleBooks();
-  document.getElementById(`filter-all`).checked = true; 
-  updateLibraryDisplay(); 
+  document.getElementById(`filter-all`).checked = true;
+  updateLibraryDisplay();
 }
 
 /* Adds the given book to the library */
@@ -115,7 +115,7 @@ function updateBookStatus(book) {
   updateLibraryDisplay();
 }
 
-/* Updates the DOM to apply the selected filter */ 
+/* Updates the DOM to apply the selected filter */
 function filterLibrary(evt) {
   activeFilter = evt.target.value;
   updateLibraryDisplay();
@@ -139,7 +139,9 @@ function processNewBookForm() {
   const book = new Book(
     title === `` ? `_` : title,
     author === `` ? `_` : author,
-    numPages === `` ? `_` : numPages,
+    numPages === `` || !Number.isInteger(+numPages) || +numPages < 0
+      ? `_`
+      : +numPages,
     type === `` ? `other` : type,
     status === `` ? `unread` : status
   );
