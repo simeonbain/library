@@ -19,10 +19,11 @@ Known limitations:
 
 ## Screenshots
 ### Desktop: 
-tbd
+![Screenshot of the library on desktop](../media/Screenshot-Desktop-1.png?raw=true)
+![Screenshot of the new book form on desktop](../media/Screenshot-Desktop-2.png?raw=true)
 
 ### Mobile: 
-tbd 
+![Screenshot of the library on mobile](../media/Screenshot-Mobile-1.png?raw=true) ![Screenshot of the new book form on mobile](../media/Screenshot-Mobile-2.png?raw=true)
 
 ## Technologies
 - HTML
