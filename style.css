@@ -4,6 +4,7 @@ html {
   font-family: "Rubik", sans-serif;
 
   box-sizing: border-box;
+  height: 100vh; 
 
   --color-background: hsl(226, 43%, 10%);
   --color-header-card-accent: hsl(246, 80%, 60%);
