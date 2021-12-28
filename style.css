@@ -74,7 +74,6 @@ button {
   border: 0.1rem solid var(--color-button-secondary);
 }
 
-button:hover,
 button:active {
   background-color: var(--color-button-secondary);
   color: var(--color-button-primary);
@@ -219,11 +218,6 @@ button:active {
   color: var(--color-button-primary);
 }
 
-.status button.unread:hover {
-  background-color: var(--color-button-primary);
-  color: var(--color-button-secondary);
-}
-
 .book-card > button {
   position: absolute;
   background-color: transparent;
@@ -359,5 +353,18 @@ button:active {
 @media (min-width: 900px) {
   .books-container {
     grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn-new-book:hover,
+  .new-book-buttons button:hover {
+    background-color: var(--color-button-secondary);
+    color: var(--color-button-primary);
+  }
+
+  .status button.unread:hover {
+    background-color: var(--color-button-primary);
+    color: var(--color-button-secondary);
   }
 }
