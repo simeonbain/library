@@ -1,9 +1,9 @@
 # Library
 
-[Live Preview](https://simeonbain.github.io/library)
+[Live Site](https://simeonbain.github.io/library)
 
 ## Overview
-Small Library app that stores and displays books. 
+Small Library app that lists books you are reading.
 
 Features: 
 - Stores books with the attributes: Title, Author, Number of Pages, Type (Fiction, Nonfiction, Textbook, Other), Status (Read, Unread)
